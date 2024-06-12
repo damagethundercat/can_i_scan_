@@ -1,0 +1,254 @@
+body, html {
+    background: radial-gradient(circle, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.991) 100%);
+    margin: 0;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background-color: black;
+    font-family: Arial, sans-serif;
+}
+.vignette {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    box-shadow: 0 0 200px rgba(0,0,0,0.9) inset;
+  }
+  #container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    transition: filter 0.3s ease; /* Smooth transition for blur effect */
+}
+
+#title {
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 6vw; /* Responsive font size */
+    color: white;
+    font-family: 'Arial', sans-serif;
+    text-align: center;
+    z-index: 2;
+    white-space: nowrap;
+    user-select: none; /* Prevent text selection */
+    transition: filter 0.3s ease; /* Smooth transition for blur effect */
+    line-height: 1;
+}
+
+#changing-text {
+    display: inline-block;
+    vertical-align: bottom; /* Aligns the changing text to the bottom */
+}
+
+.dropdown {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    z-index: 3;
+}
+
+.dropbtn {
+    background-color: transparent;
+    color: rgba(255, 255, 255, 0.55);
+    border: none;
+    cursor: pointer;
+    font-size: 15px;
+    font-family: 'Arial', sans-serif;
+    padding: 10px;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.639);
+    color: rgba(255, 255, 255, 0.55);
+    padding: 10px;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    min-width: 1000px;
+    text-align: center;
+    z-index: 4;
+}
+
+.dropdown-content p {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+}
+
+.dropbtn:focus + .dropdown-content,
+.dropbtn:hover + .dropdown-content {
+    display: block;
+}
+
+canvas {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    text-align: center;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.overlay p {
+    font-size: 2em;
+    margin: 0;
+}
+
+#back-button {
+    position: fixed; /* Use fixed positioning instead of absolute */
+    top: 10px;
+    left: 10px;
+    width: 32px;
+    height: 32px;
+    z-index: 2;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    pointer-events: auto;
+}
+
+#back-button::before {
+    content: '';
+    display: block;
+    width: 0;
+    height: 0;
+    border-top: 16px solid transparent;
+    border-bottom: 16px solid transparent;
+    border-right: 16px solid white;
+    position: absolute;
+    left: 8px;
+    top: 0;
+}
+
+#back-button::after {
+    content: '';
+    display: block;
+    width: 16px;
+    height: 2px;
+    background-color: white;
+    position: absolute;
+    left: 0;
+    top: 15px;
+}
+#mini_map {
+    position: absolute;
+    right: 2rem;
+    bottom: 2rem;
+    width: 350px;
+    height: 350px;
+    box-shadow: 1px 1px 5px 3px rgba(255, 255, 255, 1);
+}
+.crosshair {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    margin-left: -10px;
+    margin-top: -10px;
+    pointer-events: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; /* 크로스헤어를 가장 위에 보이도록 설정 */
+}
+.crosshair:before, .crosshair:after {
+    content: '';
+    position: absolute;
+    background: #ffffff;
+}
+.crosshair:before {
+    width: 1px;
+    height: 20px;
+}
+.crosshair:after {
+    width: 20px;
+    height: 1px;
+}
+
+.camera-info {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    color: white;
+    padding: 0px;
+    border-radius: 5px;
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+    z-index: 1000;
+    text-align: left;
+}
+
+.camera-marker {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background-color: white;
+    border-radius: 50%;
+    z-index: 1001;
+    pointer-events: none; /* 마커가 클릭 등의 이벤트를 막지 않도록 설정 */
+    left: 50%;
+    top: 50%;
+    transform: translate(0%, 0%);
+}
+
+.minimap_crossline {
+    position: absolute;
+    background-color: white;
+    z-index: 1000;
+    pointer-events: none;
+}
+
+.minimap_crossline.horizontal {
+    width: 100%;
+    height: 1px;
+    top: 50%;
+    left: 0;
+    transform: translateY(-1px);
+}
+
+.minimap_crossline.vertical {
+    width: 1px;
+    height: 100%;
+    top: 0;
+    left: 50%;
+    transform: translateX(-1px);
+}
+
+.tutorial-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    z-index: 1001;
+    font-size: 1.5em;
+    cursor: pointer;
+}
